@@ -1,0 +1,136 @@
+/*used colors
+---------------
+steel blue #4693B5
+----------------
+light yellow #FDE74C
+--------------------
+light green 39BC53D
+---------------------
+light red #E55934
+---------------------
+light orange #FA7921
+*/
+
+
+
+/* global styles 
+---------------
+*/
+html{
+    box-sizing: border-box;
+}
+*,*::before,*::after{
+    box-sizing: inherit;
+}
+body
+{
+    background:rgb(245, 227, 94);
+    font-family: 'Inconsolata', monospace;
+    padding: 2%;
+    
+
+}
+
+h1,h2{
+    text-align: center;
+    font-size: 2em;
+    color:#E55934;
+    margin-bottom: 20px;
+}
+h3{
+    margin: 0;
+}
+
+/*info styles
+--------------------
+*/
+.info{
+   
+    overflow: hidden;
+    margin: 2% 7%;
+}
+.initial-timer{
+    display: inline-block;
+    width: 80px;
+    margin-left: 20px;
+    border-radius: 10px solid;
+    padding :10px;
+   background: #9BC53D;
+   color: antiquewhite;
+    font-weight: 700;
+    text-align: center;
+    font-size: 1.2em;
+
+}
+[value=Reset]
+{
+ float: right;
+}
+input{
+    width: 100px;
+    border: none;
+    border-radius: 10px solid;
+    padding :10px;
+   background: #9BC53D;
+   color: antiquewhite;
+    font-weight: 700;
+    font-size: 1.2em;
+
+}
+
+
+img{
+    width: 150px;
+    height: 100%;
+}
+.score-timer{
+color:antiquewhite;
+font-weight: 700;
+font-size: 1.5em;
+background: #9BC53D;
+border-radius: 10px solid;
+padding: 30px;
+text-align: center;
+height: 300px;
+
+}
+.score-timer >*{
+    margin-top: 30px ; 
+}
+.grid-container
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr ;
+    grid-gap: 10px;
+    
+}
+input[type='button']{
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+}
+.flex-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+.flex-item{
+    margin: 30px;
+}
+.grid-container div{
+    height: 100px;
+    background: url("../images/tattoo_tarot.jpg") no-repeat  ;
+    background-size: cover;
+}
+/*hide class for img
+***********************
+*/
+.hide{
+
+visibility: hidden;
+}
+.grid-container{
+    cursor: pointer;
+}
