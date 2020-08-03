@@ -144,7 +144,7 @@ function whoClicked()
       
         else{
             
-            var delayInMilliseconds = 1000; //3 second 
+            var delayInMilliseconds = 600; 
             for(let x=0;x<allD.length;x++)
             {
                 if(allD[x].classList.contains("e"))

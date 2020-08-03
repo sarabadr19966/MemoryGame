@@ -40,6 +40,12 @@ h1,h2{
 h3{
     margin: 0;
 }
+.cpy{
+    text-align: center;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+}
 
 /*info styles
 --------------------
