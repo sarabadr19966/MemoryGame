@@ -6,7 +6,6 @@ var score=document.querySelector(".score");
 var IMAGES = document.querySelectorAll("img");
 var text=document.querySelector("h2");
 var allD =document.querySelectorAll(".grid-container div");
-// add event listeners to all imgs
 
 var timer=0;
 var i =4;
@@ -16,6 +15,15 @@ var timer = [0,0,0,0];
 var clickedAlt=[];
 var Alt=0;
 var scoring=0;
+var clickedrst=0;
+
+start.addEventListener("click",interval,false);
+hide();
+randomOrder();
+reset.addEventListener("click",resetGame,false);
+
+
+
 /*disable clicking on div until start time is over
 ------------------------------------------------
 */
@@ -26,8 +34,6 @@ function disAllow()
         allD[x].classList.toggle("e");
     }
 }
-var clickedrst=0;
-
 function interval()
    {
        clickedrst++;
@@ -42,12 +48,14 @@ function interval()
 
 
  
-    }
-    function clicking(){
-        document.querySelectorAll('.e').forEach(item => {
-            item.addEventListener('click',whoClicked)
-          })
-    }
+}
+// add event listeners to all imgs
+
+function clicking(){
+    allD.forEach(item => {
+        item.addEventListener('click',whoClicked)
+        })
+}
 function timeToStart ()
 {
     
@@ -65,7 +73,6 @@ function timeToStart ()
    }
    
 }
-start.addEventListener("click",interval,false);
 
 /*timer ----*/
 function leadingZero(time) {
@@ -89,7 +96,7 @@ function runTimer() {
         prevent();
        if(scoring<40){
            text.innerHTML=("Game Over!!!");
-           document.querySelectorAll('.e').forEach(item => {
+           allD.forEach(item => {
             item.removeEventListener('click',whoClicked)
           })
            prevent();
@@ -116,7 +123,6 @@ function hide()
 
 function whoClicked()
 {    var id =[0,0];
-
     let x=this.id;
     IMAGES[x-1].classList.toggle("hide");
     this.classList.add("e");
@@ -126,49 +132,69 @@ function whoClicked()
     Alt++;
     if(Alt==4)
     {
-        
-        
-        if(clickedAlt[0]==clickedAlt[2])
-        {
-            scoring+=10;
-            score.innerHTML=scoring;
-            if (scoring==60)
-            {
-                clearInterval(interval2) ;
-                text.innerHTML=("You Win !!");
-                text.style.color="green"
-            }
-
-           
+        allD.forEach(item => {
+            item.removeEventListener('click',whoClicked)
+          })
+        if(clickedAlt[1]===clickedAlt[3]){
+           clickedAlt.splice(2,2)
+           Alt=2; 
+           allD.forEach(item => {
+            item.addEventListener('click',whoClicked)
+          })
         }
-      
         else{
-            
-            var delayInMilliseconds = 600; 
-            for(let x=0;x<allD.length;x++)
-            {
-                if(allD[x].classList.contains("e"))
+            if(clickedAlt[0]==clickedAlt[2]){
+                scoring+=10;
+                score.innerHTML=scoring;
+                if (scoring==60)
                 {
-                  allD[x].classList.remove("e");  
+                    clearInterval(interval2) ;
+                    text.innerHTML=("You Win !!");
+                    text.style.color="green"
                 }
+                setTimeout(function() {
+                  
+                 allD.forEach(item => {
+                    item.addEventListener('click',whoClicked)
+                  }) 
+                }, delayInMilliseconds);
+              
             }
-            setTimeout(function() {
-                IMAGES[clickedAlt[1]].classList.add("hide");
-                IMAGES[clickedAlt[3]].classList.add("hide");
-             disAllow();
-            }, delayInMilliseconds);
-         disAllow();   
+          
+            else{
+                
+                var delayInMilliseconds = 500; 
+                for(let x=0;x<allD.length;x++)
+                {
+                    if(allD[x].classList.contains("e"))
+                    {
+                      allD[x].classList.remove("e");  
+                    }
+                }
+                setTimeout(function() {
+                    IMAGES[clickedAlt[1]].classList.add("hide");
+                    IMAGES[clickedAlt[3]].classList.add("hide");
+                 disAllow();
+                 allD.forEach(item => {
+                    item.addEventListener('click',whoClicked)
+                  }) 
+                }, delayInMilliseconds);
+             disAllow();   
+            
+            }
+         
         }
+       
         Alt=0;
+     
     }
-    
-}
 
+
+}
 
 /* random order for images
 ----------------------------
 */
-hide();
 function randomOrder(){
     var r;
     for(let x=0;x<12;x++)
@@ -179,14 +205,10 @@ function randomOrder(){
     }
 
 }
-randomOrder();
-
-
-reset.addEventListener("click",resetGame,false);
 function resetGame()
 {
     clickedrst=0;
-    document.querySelectorAll('.e').forEach(item => {
+    allD.forEach(item => {
         item.removeEventListener('click',whoClicked)
       })
     clearInterval(interval2);

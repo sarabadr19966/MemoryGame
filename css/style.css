@@ -121,6 +121,13 @@ input[type='button']{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
     
 }
 .flex-item{
@@ -131,6 +138,7 @@ input[type='button']{
     background: url("../images/tattoo_tarot.jpg") no-repeat  ;
     background-size: cover;
     background-position: center center;
+
 
 }
 /*hide class for img
